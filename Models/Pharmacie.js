@@ -6,6 +6,11 @@ const PharmacieSchema = new Schema({
         type: String,
         required: true
     },
+
+    ville: String,
+
+    wilaya: String,
+
     adresse: String,
 
     caisse: String,
@@ -18,10 +23,13 @@ const PharmacieSchema = new Schema({
 
     fb : String ,
 
-    lat : Number ,
-
-    lng : Number ,
+    location: {
+        type: { type: String },
+        coordinates: []
+    },
 
 });
+
+PharmacieSchema.index({ location: "2dsphere" });
 
 module.exports = mongoose.model('pharmacie', PharmacieSchema);
