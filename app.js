@@ -1,15 +1,16 @@
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const commandRouter = require('./routes/command');
-const pharmacieRouter = require('./routes/pharmacie');
+const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
+const indexRouter = require('./routes/index')
+const usersRouter = require('./routes/users')
+const commandRouter = require('./routes/command')
+const pharmacieRouter = require('./routes/pharmacie')
 const app = express();
 const Mongoose = require('mongoose')
-const url = "mongodb://localhost:27017/pharmacie";
-const port = process.env.PORT || 3000;
+const url = "mongodb://localhost:27017/pharmacie"
+const port = process.env.PORT || 3000
+const http = require('http')
 
 Mongoose.connect(url).then(res => {console.warn('connected')}).catch(err => {console.warn(err)});
 
@@ -27,5 +28,7 @@ app.use('/pharmacies', pharmacieRouter);
 app.listen(port, function () {
     console.log("Running RestHub on port " + port);
 });
+
+
 
 module.exports = app;
