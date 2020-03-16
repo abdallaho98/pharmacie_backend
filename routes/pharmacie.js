@@ -30,7 +30,7 @@ router.get('/near', function(req, res, next) {
 
 /* GET home page. */
 router.post('/add', function(req, res, next) {
-    console.warn("process create")
+    console.warn("process add pharmacie")
     Pharmacie.create(req.body).then(data => {   res.send(data);}).catch(err => {res.status(400).send(err);})
 });
 
